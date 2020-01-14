@@ -3,7 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
+	"os/exec"
 
 	"./dl"
 )
@@ -46,6 +48,14 @@ func main() {
 	if err := downloader.Start(chanSize); err != nil {
 		panic(err)
 	}
+
+	cmd := exec.Command("ffmpeg", " -i "+fileName+".ts"+" -acodec copy -vcodec copy "+fileName+".mp4")
+	out, err := cmd.CombinedOutput()
+	if err != nil {
+		log.Fatalf("cmd.Run() failed with %s\n", err)
+	}
+	fmt.Printf("combined out:\n%s\n", string(out))
+
 	fmt.Println("Done!")
 }
 
