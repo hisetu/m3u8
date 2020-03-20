@@ -49,7 +49,7 @@ func main() {
 		panic(err)
 	}
 
-	cmd := exec.Command("ffmpeg", " -i "+fileName+".ts"+" -acodec copy -vcodec copy "+fileName+".mp4")
+	cmd := exec.Command("ffmpeg", "-i", fileName+".ts", "-acodec", "copy", "-vcodec", "copy", fileName+".mp4")
 	out, err := cmd.CombinedOutput()
 	if err != nil {
 		log.Fatalf("cmd.Run() failed with %s\n", err)
