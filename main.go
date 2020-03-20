@@ -21,7 +21,7 @@ func init() {
 	flag.StringVar(&url, "u", "", "M3U8 URL, required")
 	flag.IntVar(&chanSize, "c", 25, "Maximum number of occurrences")
 	flag.StringVar(&output, "o", "", "Output folder, required")
-	flag.StringVar(&fileName, "n", "main", "Output file name")
+	flag.StringVar(&fileName, "n", "", "Output file name")
 }
 
 func main() {
@@ -37,6 +37,9 @@ func main() {
 	}
 	if output == "" {
 		panicParameter("o")
+	}
+	if fileName == "" {
+		panicParameter("n")
 	}
 	if chanSize <= 0 {
 		panic("parameter 'c' must be greater than 0")
