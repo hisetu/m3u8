@@ -20,7 +20,7 @@ var (
 func init() {
 	flag.StringVar(&url, "u", "", "M3U8 URL, required")
 	flag.IntVar(&chanSize, "c", 25, "Maximum number of occurrences")
-	flag.StringVar(&output, "o", "", "Output folder, required")
+	flag.StringVar(&output, "o", ".", "Output folder, required")
 	flag.StringVar(&fileName, "n", "", "Output file name")
 }
 
